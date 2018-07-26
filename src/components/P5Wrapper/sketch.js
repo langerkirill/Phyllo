@@ -16,6 +16,7 @@ export default function (p) {
     console.log("::: displayDensity:", p.displayDensity());
     console.log("::: pixelDensity:", p.pixelDensity());
     onReady();
+    p.colorMode(p.HSB, 255);
   }
 
   let center_width=1, width_between=4;
@@ -25,6 +26,7 @@ export default function (p) {
     let speed = props.speed;
     let size = props.size;
     let angle = props.angle;
+    let hue = props.hue;
 
     p.frameRate(speed);
     p.translate(p.width/2,p.height/2);
@@ -42,14 +44,14 @@ export default function (p) {
     p.point(x,y)
     center_width += 2
 
-    let randomColor = function () {
-      let r = Math.floor(Math.random()*256);
-      let g = Math.floor(Math.random()*256);
-      let b = Math.floor(Math.random()*256);
-      p.stroke(r,g,b)
-    }
+    // let randomColor = function () {
+    //   let r = Math.floor(Math.random()*256);
+    //   let g = Math.floor(Math.random()*256);
+    //   let b = Math.floor(Math.random()*256);
+    // }
 
-    randomColor();
+    p.stroke(hue, 255, 255);
+    p.fill(hue, 255, 255, 127);
 
   }
 }
