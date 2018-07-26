@@ -17,9 +17,12 @@ export default function (p) {
     console.log("::: pixelDensity:", p.pixelDensity());
     onReady();
     p.colorMode(p.HSB, 255);
+    p.background(0);
   }
 
-  let center_width=1, width_between=4;
+
+  // p.setup();
+  // let center_width=1, width_between=4;
 
   p.draw = function() {
 
