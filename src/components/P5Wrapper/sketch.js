@@ -7,6 +7,7 @@ export default function (p) {
   };
 
   p.pushProps = function (_props) {
+    debugger
     props = _props;
   }
 

@@ -18,6 +18,7 @@ export default class App extends React.Component {
     }
 
   handleClick () {
+    debugger
     let bool = !this.state.random;
     this.setState({random: bool});
   }

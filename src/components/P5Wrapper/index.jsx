@@ -15,16 +15,17 @@ class P5Wrapper extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.canvas.pushProps({ ...this.props.p5Props, getValue: this.props.getValue });
+    debugger
+    this.canvas.pushProps({ ...nextProps.p5Props, getValue: this.props.getValue });
   }
 
   shouldComponentUpdate() { // just in case :)
     return false;
   }
 
-  // componentWillUnmount() {
-  //   this.canvas.remove();
-  // }
+  componentWillUnmount() {
+    this.canvas.remove();
+  }
 
   render() {
     return (
