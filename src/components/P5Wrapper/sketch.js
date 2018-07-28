@@ -21,6 +21,15 @@ export default function (p) {
 
   let center_width=1, width_between=4;
 
+  p.mousePressed = function () {
+  // Check if mouse is inside the circle
+  if (p.mouseX >= 0 && p.mouseX <= 900 && p.mouseY >= 0 && p.mouseY <= 600) {
+    // Pick new random color values
+    p.setup();
+    center_width=1, width_between=4;
+  }
+}
+
   p.draw = function() {
 
     let speed = props.speed;
