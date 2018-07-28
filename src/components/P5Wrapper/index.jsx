@@ -22,9 +22,9 @@ class P5Wrapper extends Component {
     return false;
   }
 
-  componentWillUnmount() {
-    this.canvas.remove();
-  }
+  // componentWillUnmount() {
+  //   this.canvas.remove();
+  // }
 
   render() {
     return (

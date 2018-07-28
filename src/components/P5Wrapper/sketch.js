@@ -7,7 +7,6 @@ export default function (p) {
   };
 
   p.pushProps = function (_props) {
-    debugger
     props = _props;
   }
 
@@ -20,9 +19,7 @@ export default function (p) {
     p.background(0);
   }
 
-
-  // p.setup();
-  // let center_width=1, width_between=4;
+  let center_width=1, width_between=4;
 
   p.draw = function() {
 
@@ -30,6 +27,7 @@ export default function (p) {
     let size = props.size;
     let angle = props.angle;
     let hue = props.hue;
+    let random = props.random;
 
     p.frameRate(speed);
     p.translate(p.width/2,p.height/2);
@@ -47,15 +45,23 @@ export default function (p) {
     p.point(x,y)
     center_width += 2
 
-    // let randomColor = function () {
-    //   let r = Math.floor(Math.random()*256);
-    //   let g = Math.floor(Math.random()*256);
-    //   let b = Math.floor(Math.random()*256);
-    // }
 
-    p.stroke(hue, 255, 255);
-    p.fill(hue, 255, 255, 127);
+    let randomColor = function () {
+      let r = Math.floor(Math.random()*256);
+      let g = Math.floor(Math.random()*256);
+      let b = Math.floor(Math.random()*256);
+      p.stroke(r,g,b);
+    }
 
+    let chooseColor = function () {
+      if (props.random) {
+        randomColor();
+      } else {
+      p.stroke(hue, 255, 255);
+      p.fill(hue, 255, 255, 127);
+      }
+    }
+    chooseColor();
   }
 }
 
