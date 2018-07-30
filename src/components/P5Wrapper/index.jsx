@@ -15,7 +15,6 @@ class P5Wrapper extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    debugger
     this.canvas.pushProps({ ...nextProps.p5Props, getValue: this.props.getValue });
   }
 

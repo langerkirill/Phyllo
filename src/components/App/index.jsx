@@ -99,18 +99,6 @@ export default class App extends React.Component {
         <p style={{ textAlign: "center" }}>
           Adjust hue
         </p>
-        <label> Shape <br/>
-          <select className="shape-input" value={this.state.shape} onChange={this.updateField('shape')}>
-            <option selected="selected" value="point">Point</option>
-            <option value="circle">Circle</option>
-            <option value="square">Square</option>
-            <option value="triangle">Triangle</option>
-            <option value="cone">Cone</option>
-            <option value="torus">Torus</option>
-            <option value="cylinder">Cylinder</option>
-            <option value="box">Box</option>
-          </select>
-        </label>
         <div style={{ textAlign: "center" }}>
           <br />
           <button
@@ -132,6 +120,14 @@ export default class App extends React.Component {
             <span className="blue">s</span>
           </button>
         </div>
+        <label> Shape <br/>
+          <select className="shape-input" value={this.state.shape} onChange={this.updateField('shape')}>
+            <option selected="selected" value="point">Point</option>
+            <option value="circle">Circle</option>
+            <option value="square">Square</option>
+            <option value="triangle">Triangle</option>
+          </select>
+        </label>
         </section>
       </div>
     );

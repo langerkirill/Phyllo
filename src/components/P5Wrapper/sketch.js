@@ -11,10 +11,8 @@ export default function (p) {
   }
 
   p.setup = function() {
+    // p.createCanvas(900, 600);
     p.createCanvas(900, 600);
-    // p.createCanvas(900, 600, p.WEBGL);
-    console.log("::: displayDensity:", p.displayDensity());
-    console.log("::: pixelDensity:", p.pixelDensity());
     onReady();
     p.colorMode(p.HSB, 255);
     p.background(0);
@@ -32,8 +30,9 @@ export default function (p) {
   }
 }
 
-  p.draw = function() {
+  // let threeD = false;
 
+  p.draw = function() {
     let speed = props.speed;
     let size = props.size;
     let angle = props.angle;
@@ -73,37 +72,54 @@ export default function (p) {
     chooseColor();
 
     let twoDShape = function () {
-      if (props.shape === 'point') {
+      // if (threeD){
+      //   threeD = false;
+      //   p.setup = function() {
+      //     p.createCanvas(900, 600);
+      //     p.colorMode(p.HSB, 255);
+      //     onReady();
+      //     p.background(0);
+      //   }
+      //   p.setup();
+      // }
+      if (shape === 'point') {
         p.point(x,y)
-      } else if (props.shape === 'triangle'){
+      } else if (shape  === 'triangle'){
         p.triangle(x+5, y-5, x-10, y+10, x-10, y-10);
-      } else if (props.shape === 'circle'){
-        p.ellipse(x, y, x, y);
+      } else if (shape  === 'circle'){
+        p.ellipse(x, y, 10, 10);
+      } else if (shape === 'square' ) {
+        p.rect(x, y, 10, 10);
       }
     }
-
-    let threeDShape = function () {
-      p.translate(-500, -300, -300);
-      p.translate(x, y, -300);
-      if (props.shape === 'sphere') {
-        p.sphere(70);
-      } else if (props.shape === 'torus'){
-        p.torus(70, 20);
-      } else if (props.shape === 'cone'){
-        p.cone(70, 70);
-      }
-    }
-
-    let two = ['circle', 'square', 'triangle', 'point']
-
-    if (two.includes(props.shape)) {
-      twoDShape();
-    } else {
-      threeDShape();
-    }
+    twoDShape();
   }
 }
+    // let threeDShape = function () {
+    //   if (threeD === false){
+    //     threeD = true;
+    //     p.setup = function() {
+    //       p.createCanvas(900, 600, p.WEBGL);
+    //       p.colorMode(p.HSB, 255);
+    //       onReady();
+    //       p.background(0);
+    //     }
+    //     p.setup();
+    //   }
+    //   p.translate(-500, -300, -300);
+    //   p.translate(x, y, -300);
+    //   if (props.shape === 'sphere') {
+    //     p.sphere(70);
+    //   } else if (props.shape === 'torus'){
+    //     p.torus(70, 20);
+    //   } else if (props.shape === 'cone'){
+    //     p.cone(70, 70);
+    //   }
+    // }
 
+    // let two = ['circle', 'square', 'triangle', 'point']
+
+    // if (two.includes(shape)) {
 
 
 // export default function (p) {
@@ -133,8 +149,6 @@ export default function (p) {
 //     r = c * p.sqrt(n);
 //     let x = r * p.cos(137.5);
 //     let y = r * p.sin(137.5);
-//
-//
 //
 //     randomColor();
 //     p.strokeWeight(15);

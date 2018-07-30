@@ -28,7 +28,6 @@ img {
 }
 
 .knobs  {
-  border: 1px solid white;
   margin-right: 50px;
   width: 20%;
 }
@@ -53,7 +52,7 @@ button:hover .blue {
 }
 
 button span {
-    transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 button:hover .red {
@@ -66,4 +65,14 @@ button:hover .orange {
 
 button:hover .green {
   color: green;
+}
+
+.shape-input {
+  margin: 0 auto;
+  border: 1px solid white;
+  width: 90%;
+  text-align: center;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
