@@ -26,11 +26,20 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <div className="info-box">
+          <a>Link to my linkedIn</a>
+          <p style={{ textAlign: "center" }}>
+            <a href="https://github.com/atorov/react-p5js">
+              <img border="0" alt="github logo" src="/img/github-logo.png" width="auto" height="28px" style={{ verticalAlign: "middle" }}/>
+            </a>
+          </p>
+        </div>
         <P5Wrapper
           p5Props={{ size: this.state.size, angle: this.state.angle, speed: this.state.speed, hue: this.state.hue, random: this.state.random }}
           getValue={this.getValue}
           onReady={this.onReady}
         />
+      <section className="knobs">
         <div style={{ textAlign: "center" }}>
           <strong>{this.state.size}</strong>
           <br />
@@ -91,11 +100,7 @@ export default class App extends React.Component {
             onClick={this.handleClick}
           >Random Colors</button>
         </div>
-        <p style={{ textAlign: "center" }}>
-          <a href="https://github.com/atorov/react-p5js">
-            <img border="0" alt="github logo" src="/img/github-logo.png" width="auto" height="28px" style={{ verticalAlign: "middle" }}/>
-          </a>
-        </p>
+        </section>
       </div>
     );
   }

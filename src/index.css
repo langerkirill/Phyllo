@@ -2,4 +2,35 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  background: black;
+}
+
+button {
+  background-color: white;
+}
+
+p, strong {
+  color: white;
+}
+
+.app {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid white;
+}
+
+img {
+  color: white;
+  border: 1px solid white;
+}
+
+.knobs  {
+  border: 1px solid white;
+  margin-right: 50px;
+  width: 20%;
+}
+
+p {
+  margin-bottom: 40px;
 }
