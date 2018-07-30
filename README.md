@@ -1,100 +1,76 @@
+## JS Project Proposal: Phyllotaxis-Demo
 
-# Using React with p5.js
+### Background
 
-![alt application screenshot](https://raw.githubusercontent.com/atorov/react-p5js/master/public/img/screeshot.png)
+Phyllotaxis is a botanical concept that describes the arrangement of leaves on a plant stem. Phyllotactic spirals are a specific class of patterns that recur in nature. Fermat's spiral outlines the mathematics behind phyllotaxis.
 
-This project demonstrates the possibility of combining React and p5.js.
+1) A mesh of spirals occurs in Fibonacci numbers because divergence (angle of succession in a single spiral arrangement) approaches the golden ratio.
+2) 137.508° is the golden angle which is approximated by ratios of Fibonacci numbers, this determines spiral angle.
+3) Mathematical formula:
 
-[React](https://reactjs.org/) is one of the most popular JavaScript libraries for creating single page applications.<br>
-[p5.js](https://p5js.org/) is a JavaScript library with a full set of drawing functionality.
+  r = c√n,
+  θ = n X 137.508 deg
+  
+  Where θ is the angle, r is the radius or distance from the center, and n is the index number of the floret and c is a constant scaling factor.
 
-Check the online version [here](http://react-p5js.surge.sh/).
+There is a lot of potential for user interaction to alter the visual representation of Phyllotaxis using Fermat's spiral as a base formula. 
 
-The basic idea is that the p5.js sketch is wrapped in a React component. The data that comes into the sketch is passed on to this component as props. Callbacks are used to return information back from the sketch to the application.
+### Functionality & MVP  
 
-A much more advanced example, built on the same concept, can be found [here](https://github.com/atorov/fractal-tree-simulator).
+Users will have the ability to
 
-## Project Structure
-The project is build on [Create React App](https://github.com/facebookincubator/create-react-app).
+- Change the rate of flux of the pattern
+- Change diameter and color of the circles that tile it
+- Change the total number of circles to increase or decrease size
+- Toggle colors and the distribution of colors
 
-For the project to build, **these files must exist with exact filenames**:
+I will also include:
 
-* `public/index.html` is the page template;
-* `src/index.js` is the JavaScript entry point.
+- An about modal describing the mathematical formula and a explaining that this naturally occurs in plants
+- A production README
 
-You can delete or rename the other files. You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack. You need to **put any JS and CSS files inside `src`**, otherwise Webpack won’t see them.
+### Wireframes
 
-Only files inside `public` can be used from `public/index.html`.
+There will be a main layout that has the visualization centered. There will be links to the Github, my LinkedIn,
+and the About modal. There will be a constantly shifting shape if the rate of movement is selected to be high. I will implement inputs or sliding scales to change the formula and alter the display of the pattern. On the right, there will be three (or more) inputs that alter the program that generates the pattern. I may or may not implement default states to show some interesting patterns that I generated myself.
 
-You can, however, create more top-level directories. They will not be included in the production build so you can use them for things like documentation.
+![wireframes](https://github.com/langerkirill/Phyllotaxis-Demo/blob/master/Wireframe%20for%20Phyllotaxis%20Demo.png)
 
-## Available Scripts
+### Architecture and Technologies
 
-In the project directory, you can run:
+This project will be implemented with the following technologies:
 
-### `npm start`
+- `JavaScript` for pattern rendering logic
+- `Processing` with `P5.js` for rendering the patterns and effects
 
-Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
+There will be two scripts involved in this project:
 
-### `npm test`
+`Display.js`: this script will handle the logic for creating and updating the necessary `Phyllo.js` display and rendering the pattern.
 
-Launches the test runner in the interactive watch mode.<br>
+### Implementation Timeline
 
-### `npm run build`
+**Day 1**: Setup all necessary Node modules, including getting webpack up and running. Get a working idea of how to implement P5 and Processing into Display.js. Get the entry file showing something on the DOM. 
 
-Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed.
+- Show some circles on the page
+- Get them to change shape with different backend formula alterations
 
-### `npm run eject`
+**Day 2**: Find out how to change colors. Give the user the ability to change objects on the screen on click. See the pattern shift with basic manipulation that gives the user a sense of the nature of the spiral. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Get a functional display that allows for alteration of the pattern in real time.
+- Work on rendering different colors.
+- Create an about that gives the user information about the formula and the Phyllotaxis pattern.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Day 3**: Complete the backend that gives the user complicated manipulation of the formula. Style the page so that the appearance is professional and the display renders a visually pleasing pattern.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Generate complex manipulation functionality that integrates seemlessly with the display.
+- Have a styled about section and working links to my git and linkedin.
+- Give the user a way to scale the pattern and change the colors in real time.
+- Work on uploading the project to GitPages
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Bonus features
 
-## Supported Language Features and Polyfills
+There are some complicated things that would be awesome to implement.
 
-This project supports a superset of the latest JavaScript standard. In addition to [ES6](https://github.com/lukehoban/es6features) syntax features, it also supports:
-
-* [Exponentiation Operator](https://github.com/rwaldron/exponentiation-operator) (ES2016).
-* [Async/await](https://github.com/tc39/ecmascript-asyncawait) (ES2017).
-* [Object Rest/Spread Properties](https://github.com/sebmarkbage/ecmascript-rest-spread) (stage 3 proposal).
-* [Dynamic import()](https://github.com/tc39/proposal-dynamic-import) (stage 3 proposal)
-* [Class Fields and Static Properties](https://github.com/tc39/proposal-class-public-fields) (part of stage 3 proposal).
-* [JSX](https://facebook.github.io/react/docs/introducing-jsx.html) and [Flow](https://flowtype.org/) syntax.
-
-## Syntax Highlighting and Displaying Lint Output in the Editor
-
-Тhe most popular editors should be covered and your editor should report the linting warnings..
-
-## Code Splitting
-
-Code splitting allows you to split your code into small chunks which you can then load on demand.
-This project setup supports code splitting via [dynamic `import()`](http://2ality.com/2017/01/import-operator.html#loading-code-on-demand).
-
-## Adding a Router and Redux
-
-[React Router](https://reacttraining.com/react-router/) is the most popular option.
-[Redux](https://redux.js.org/) is a predictable state container for JavaScript apps.
-
-React Router and Redux can easily be added to the project.
-
-## Running Tests
-
-[Jest](https://facebook.github.io/jest/) is a Node-based runner. While Jest provides browser globals such as `window` thanks to [jsdom](https://github.com/tmpvar/jsdom), they are only approximations of the real browser behavior. Jest is intended to be used for unit tests of your logic and your components rather than the DOM quirks.
-
-### Filename Conventions
-
-Jest will look for test files with any of the following popular naming conventions:
-
-* Files with `.js` suffix in `__tests__` folders.
-* Files with `.test.js` suffix.
-* Files with `.spec.js` suffix.
-
-The `.test.js` / `.spec.js` files (or the `__tests__` folders) can be located at any depth under the `src` top level folder. It is recommended to put the test files (or `__tests__` folders) next to the code they are testing so that relative imports appear shorter. For example, if `App.test.js` and `App.js` are in the same folder, the test just needs to `import App from './App'` instead of a long relative path. Colocation also helps find tests more quickly in larger projects.
-
-### Command Line Interface
-
-When you run `npm test`, Jest will launch in the watch mode. Every time you save a file, it will re-run the tests, just like `npm start` recompiles the code.
+- Make an option to display the spiral in 3D
+- Make some default layouts that I find to be most impressive
+- Add the ability to use different shapes aside from just spheres
