@@ -7,12 +7,12 @@ export default function (p) {
   };
 
   p.pushProps = function (_props) {
-    debugger
     props = _props;
   }
 
   p.setup = function() {
     p.createCanvas(900, 600);
+    // p.createCanvas(900, 600, p.WEBGL);
     console.log("::: displayDensity:", p.displayDensity());
     console.log("::: pixelDensity:", p.pixelDensity());
     onReady();
@@ -27,7 +27,8 @@ export default function (p) {
   if (p.mouseX >= 0 && p.mouseX <= 900 && p.mouseY >= 0 && p.mouseY <= 600) {
     // Pick new random color values
     p.setup();
-    center_width=1, width_between=4;
+    center_width=1;
+    width_between=4;
   }
 }
 
@@ -38,6 +39,7 @@ export default function (p) {
     let angle = props.angle;
     let hue = props.hue;
     let random = props.random;
+    let shape = props.shape;
 
     p.frameRate(speed);
     p.translate(p.width/2,p.height/2);
@@ -49,12 +51,8 @@ export default function (p) {
     let x = r * p.cos(angle);
     let y = r * p.sin(angle);
 
-    // setTimeout(function(){ alert("Hello"); }, 3000);
-
     p.strokeWeight(size);
-    p.point(x,y)
     center_width += 2
-
 
     let randomColor = function () {
       let r = Math.floor(Math.random()*256);
@@ -64,14 +62,45 @@ export default function (p) {
     }
 
     let chooseColor = function () {
-      if (props.random) {
+      if (random) {
         randomColor();
       } else {
       p.stroke(hue, 255, 255);
       p.fill(hue, 255, 255, 127);
       }
     }
+
     chooseColor();
+
+    let twoDShape = function () {
+      if (props.shape === 'point') {
+        p.point(x,y)
+      } else if (props.shape === 'triangle'){
+        p.triangle(x+5, y-5, x-10, y+10, x-10, y-10);
+      } else if (props.shape === 'circle'){
+        p.ellipse(x, y, x, y);
+      }
+    }
+
+    let threeDShape = function () {
+      p.translate(-500, -300, -300);
+      p.translate(x, y, -300);
+      if (props.shape === 'sphere') {
+        p.sphere(70);
+      } else if (props.shape === 'torus'){
+        p.torus(70, 20);
+      } else if (props.shape === 'cone'){
+        p.cone(70, 70);
+      }
+    }
+
+    let two = ['circle', 'square', 'triangle', 'point']
+
+    if (two.includes(props.shape)) {
+      twoDShape();
+    } else {
+      threeDShape();
+    }
   }
 }
 
@@ -105,15 +134,6 @@ export default function (p) {
 //     let x = r * p.cos(137.5);
 //     let y = r * p.sin(137.5);
 //
-//     let triangle;
-//
-//     let shape = function (x,y) {
-//       if (triangle === true) {
-//         p.triangle(x+5, y-5, x-10, y+10, x-10, y-10);
-//       } else {
-//         p.point(x,y)
-//       }
-//     }
 //
 //
 //     randomColor();

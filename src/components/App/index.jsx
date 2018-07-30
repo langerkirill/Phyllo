@@ -4,8 +4,9 @@ import P5Wrapper from "../P5Wrapper/";
 export default class App extends React.Component {
   constructor() {
     super();
-    this.state = { status: "", size: 10, angle: 137.5, speed: 10, hue: 150, value: null, random:false };
+    this.state = { status: "", size: 5, angle: 137.5, speed: 150, hue: 150, value: null, random:false, shape:'point'  };
     this.handleClick = this.handleClick.bind(this);
+    this.updateField = this.updateField.bind(this);
   }
 
   getValue = (value) => this.setState({ value });
@@ -18,15 +19,21 @@ export default class App extends React.Component {
     }
 
   handleClick () {
-    debugger
     let bool = !this.state.random;
     this.setState({random: bool});
+  }
+
+  updateField(field) {
+    return e => {
+      this.setState({ [field]: e.currentTarget.value });
+    };
   }
 
   render() {
     return (
       <div className="app">
         <div className="info-box">
+          <p>Click on the screen to reset the pattern</p>
           <a>Link to my linkedIn</a>
           <p style={{ textAlign: "center" }}>
             <a href="https://github.com/atorov/react-p5js">
@@ -35,7 +42,7 @@ export default class App extends React.Component {
           </p>
         </div>
         <P5Wrapper
-          p5Props={{ size: this.state.size, angle: this.state.angle, speed: this.state.speed, hue: this.state.hue, random: this.state.random }}
+          p5Props={{ size: this.state.size, angle: this.state.angle, speed: this.state.speed, hue: this.state.hue, random: this.state.random, shape: this.state.shape }}
           getValue={this.getValue}
           onReady={this.onReady}
         />
@@ -51,7 +58,7 @@ export default class App extends React.Component {
           />
         </div>
         <p style={{ textAlign: "center" }}>
-          Adjust point size
+          Adjust size
         </p>
         <div style={{ textAlign: "center" }}>
           <strong>{this.state.angle}</strong>
@@ -64,7 +71,7 @@ export default class App extends React.Component {
           />
         </div>
         <p style={{ textAlign: "center" }}>
-          Adjust point angle
+          Adjust angle
         </p>
         <div style={{ textAlign: "center" }}>
           <strong>{this.state.speed}</strong>
@@ -77,7 +84,7 @@ export default class App extends React.Component {
           />
         </div>
         <p style={{ textAlign: "center" }}>
-          Adjust point speed
+          Adjust speed
         </p>
         <div style={{ textAlign: "center" }}>
           <strong>{this.state.hue}</strong>
@@ -90,15 +97,40 @@ export default class App extends React.Component {
           />
         </div>
         <p style={{ textAlign: "center" }}>
-          Adjust point hue
+          Adjust hue
         </p>
+        <label> Shape <br/>
+          <select className="shape-input" value={this.state.shape} onChange={this.updateField('shape')}>
+            <option selected="selected" value="point">Point</option>
+            <option value="circle">Circle</option>
+            <option value="square">Square</option>
+            <option value="triangle">Triangle</option>
+            <option value="cone">Cone</option>
+            <option value="torus">Torus</option>
+            <option value="cylinder">Cylinder</option>
+            <option value="box">Box</option>
+          </select>
+        </label>
         <div style={{ textAlign: "center" }}>
           <br />
           <button
             value={this.state.random}
             style={{ width: "90%", maxWidth: "900px" }}
-            onClick={this.handleClick}
-          >Random Colors</button>
+            onClick={this.handleClick}>
+            <span className="blue">R</span>
+            <span className="red">a</span>
+            <span className="orange">n</span>
+            <span className="blue">d</span>
+            <span className="green">o</span>
+            <span className="red">m</span>
+            <span className="blue"> </span>
+            <span className="red">C</span>
+            <span className="orange">o</span>
+            <span className="blue">l</span>
+            <span className="green">o</span>
+            <span className="red">r</span>
+            <span className="blue">s</span>
+          </button>
         </div>
         </section>
       </div>
