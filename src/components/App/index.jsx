@@ -1,12 +1,14 @@
 import React from "react";
 import P5Wrapper from "../P5Wrapper/";
+import InfoBox from './info_box';
 
 export default class App extends React.Component {
   constructor() {
     super();
-    this.state = { status: "", size: 5, angle: 137.5, speed: 150, hue: 150, value: null, random:false, shape:'point'  };
+    this.state = { status: "", size: 5, angle: 137.5, speed: 150, hue: 150, value: null, random:false, shape:'point', info: false  };
     this.handleClick = this.handleClick.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.handleIHover = this.handleIHover.bind(this);
   }
 
   getValue = (value) => this.setState({ value });
@@ -23,6 +25,11 @@ export default class App extends React.Component {
     this.setState({random: bool});
   }
 
+  handleIHover () {
+    let bool = !this.state.info;
+    this.setState({info: bool});
+  }
+
   updateField(field) {
     return e => {
       this.setState({ [field]: e.currentTarget.value });
@@ -30,16 +37,29 @@ export default class App extends React.Component {
   }
 
   render() {
+
+    const infoHover = () => {
+      if (this.state.info) {
+        return (<InfoBox />);
+      } else {
+        return "";
+      }
+    }
+
     return (
       <div className="app">
         <div className="info-box">
-          <p>Click on the screen to reset the pattern</p>
-          <a>Link to my linkedIn</a>
-          <p style={{ textAlign: "center" }}>
-            <a href="https://github.com/atorov/react-p5js">
-              <img border="0" alt="github logo" src="/img/github-logo.png" width="auto" height="28px" style={{ verticalAlign: "middle" }}/>
+          <div onMouseEnter={this.handleIHover} onMouseLeave={this.handleIHover}>
+            {infoHover()}
+            <i className="info material-icons">&#xe88f;</i>
+          </div>
+          <a href="https://www.linkedin.com/in/kirill-langer-6b292299/"><p>linkedIn</p></a>
+          <div style={{ textAlign: "center" }}>
+            <a href="https://github.com/langerkirill/Phyllotaxis-Demo">
+              <p>GitHub</p>
             </a>
-          </p>
+          </div>
+          <p>Click on the screen to reset the pattern</p>
         </div>
         <P5Wrapper
           p5Props={{ size: this.state.size, angle: this.state.angle, speed: this.state.speed, hue: this.state.hue, random: this.state.random, shape: this.state.shape }}
