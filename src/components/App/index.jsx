@@ -48,108 +48,112 @@ export default class App extends React.Component {
     // <div className="header">Phyllotaxis Visualization</div>
 
     return (
-      <div className="app">
-        <div className="info-box">
-          <div className="i-box" onMouseEnter={this.handleIHover} onMouseLeave={this.handleIHover}>
-            {infoHover()}
-            <i className="info material-icons">&#xe88f;</i>
+      <div className="app-box">
+        <div className="header">Phyllotaxis Visualization</div>
+        <div className="app">
+          <div className="info-box">
+            <div className="i-box" onMouseEnter={this.handleIHover} onMouseLeave={this.handleIHover}>
+              {infoHover()}
+              <i className="info material-icons">&#xe88f;</i>
+            </div>
+            <a href="https://www.linkedin.com/in/kirill-langer-6b292299/"><p>linkedIn</p></a>
+            <div style={{ textAlign: "center" }}>
+              <a href="https://github.com/langerkirill/Phyllotaxis-Demo">
+                <p>GitHub</p>
+              </a>
+            </div>
+            <p>Click on the screen to reset the pattern</p>
           </div>
-          <a href="https://www.linkedin.com/in/kirill-langer-6b292299/"><p>linkedIn</p></a>
-          <div style={{ textAlign: "center" }}>
-            <a href="https://github.com/langerkirill/Phyllotaxis-Demo">
-              <p>GitHub</p>
-            </a>
+          <P5Wrapper
+            p5Props={{ size: this.state.size, angle: this.state.angle, speed: this.state.speed, hue: this.state.hue, random: this.state.random, shape: this.state.shape }}
+            getValue={this.getValue}
+            onReady={this.onReady}
+          />
+        <section className="knobs">
+          <div className="sliders" style={{ textAlign: "center" }}>
+            <strong>{this.state.size}</strong>
+            <br />
+            <input type="range"
+              min={5} max={290} step={1}
+              value={this.state.size}
+              style={{ width: "90%", maxWidth: "900px" }}
+              onChange={this.onSliderChange('size')}
+            />
+            <p style={{ textAlign: "center" }}>
+              Adjust size
+            </p>
           </div>
-          <p>Click on the screen to reset the pattern</p>
+          <div className="sliders" style={{ textAlign: "center" }}>
+            <strong>{this.state.angle}</strong>
+            <br />
+            <input type="range"
+              min={5} max={290} step={0.5}
+              value={this.state.angle}
+              style={{ width: "90%", maxWidth: "900px" }}
+              onChange={this.onSliderChange('angle')}
+            />
+            <p style={{ textAlign: "center" }}>
+              Adjust angle
+            </p>
+          </div>
+          <div className="sliders" style={{ textAlign: "center" }}>
+            <strong>{this.state.speed}</strong>
+            <br />
+            <input type="range"
+              min={5} max={290} step={1}
+              value={this.state.speed}
+              style={{ width: "90%", maxWidth: "900px" }}
+              onChange={this.onSliderChange('speed')}/>
+              <p style={{ textAlign: "center" }}>
+                Adjust speed
+              </p>
+          </div>
+          <div className="sliders" style={{ textAlign: "center" }}>
+            <strong>{this.state.hue}</strong>
+            <br />
+            <input type="range"
+              min={5} max={290} step={1}
+              value={this.state.hue}
+              style={{ width: "90%", maxWidth: "900px" }}
+              onChange={this.onSliderChange('hue')}
+            />
+            <p style={{ textAlign: "center" }}>
+              Adjust hue
+            </p>
+          </div>
+            <div>
+              <div style={{ textAlign: "center" }}>
+                <br />
+                <button
+                  value={this.state.random}
+                  style={{ width: "90%", maxWidth: "900px" }}
+                  onClick={this.handleClick}>
+                  <span className="blue">R</span>
+                  <span className="red">a</span>
+                  <span className="orange">n</span>
+                  <span className="blue">d</span>
+                  <span className="green">o</span>
+                  <span className="red">m</span>
+                  <span className="blue"> </span>
+                  <span className="red">C</span>
+                  <span className="orange">o</span>
+                  <span className="blue">l</span>
+                  <span className="green">o</span>
+                  <span className="red">r</span>
+                  <span className="blue">s</span>
+                </button>
+              </div>
+              <label> <br/>
+                <select className="shape-input" value={this.state.shape} onChange={this.updateField('shape')}>
+                  <option selected="selected" value="point">Point</option>
+                  <option value="circle">Circle</option>
+                  <option value="square">Square</option>
+                  <option value="triangle">Triangle</option>
+                </select>
+              </label>
+            </div>
+          </section>
         </div>
-        <P5Wrapper
-          p5Props={{ size: this.state.size, angle: this.state.angle, speed: this.state.speed, hue: this.state.hue, random: this.state.random, shape: this.state.shape }}
-          getValue={this.getValue}
-          onReady={this.onReady}
-        />
-      <section className="knobs">
-        <div style={{ textAlign: "center" }}>
-          <strong>{this.state.size}</strong>
-          <br />
-          <input type="range"
-            min={5} max={290} step={1}
-            value={this.state.size}
-            style={{ width: "90%", maxWidth: "900px" }}
-            onChange={this.onSliderChange('size')}
-          />
-        </div>
-        <p style={{ textAlign: "center" }}>
-          Adjust size
-        </p>
-        <div style={{ textAlign: "center" }}>
-          <strong>{this.state.angle}</strong>
-          <br />
-          <input type="range"
-            min={5} max={290} step={0.5}
-            value={this.state.angle}
-            style={{ width: "90%", maxWidth: "900px" }}
-            onChange={this.onSliderChange('angle')}
-          />
-        </div>
-        <p style={{ textAlign: "center" }}>
-          Adjust angle
-        </p>
-        <div style={{ textAlign: "center" }}>
-          <strong>{this.state.speed}</strong>
-          <br />
-          <input type="range"
-            min={5} max={290} step={1}
-            value={this.state.speed}
-            style={{ width: "90%", maxWidth: "900px" }}
-            onChange={this.onSliderChange('speed')}
-          />
-        </div>
-        <p style={{ textAlign: "center" }}>
-          Adjust speed
-        </p>
-        <div style={{ textAlign: "center" }}>
-          <strong>{this.state.hue}</strong>
-          <br />
-          <input type="range"
-            min={5} max={290} step={1}
-            value={this.state.hue}
-            style={{ width: "90%", maxWidth: "900px" }}
-            onChange={this.onSliderChange('hue')}
-          />
-        </div>
-        <p style={{ textAlign: "center" }}>
-          Adjust hue
-        </p>
-        <div style={{ textAlign: "center" }}>
-          <br />
-          <button
-            value={this.state.random}
-            style={{ width: "90%", maxWidth: "900px" }}
-            onClick={this.handleClick}>
-            <span className="blue">R</span>
-            <span className="red">a</span>
-            <span className="orange">n</span>
-            <span className="blue">d</span>
-            <span className="green">o</span>
-            <span className="red">m</span>
-            <span className="blue"> </span>
-            <span className="red">C</span>
-            <span className="orange">o</span>
-            <span className="blue">l</span>
-            <span className="green">o</span>
-            <span className="red">r</span>
-            <span className="blue">s</span>
-          </button>
-        </div>
-        <label> <br/>
-          <select className="shape-input" value={this.state.shape} onChange={this.updateField('shape')}>
-            <option selected="selected" value="point">Point</option>
-            <option value="circle">Circle</option>
-            <option value="square">Square</option>
-            <option value="triangle">Triangle</option>
-          </select>
-        </label>
-        </section>
       </div>
     );
   }
