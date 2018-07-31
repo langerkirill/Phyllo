@@ -42,14 +42,15 @@ export default class App extends React.Component {
       if (this.state.info) {
         return (<InfoBox />);
       } else {
-        return "";
+        return (<div></div>);
       }
     }
+    // <div className="header">Phyllotaxis Visualization</div>
 
     return (
       <div className="app">
         <div className="info-box">
-          <div onMouseEnter={this.handleIHover} onMouseLeave={this.handleIHover}>
+          <div className="i-box" onMouseEnter={this.handleIHover} onMouseLeave={this.handleIHover}>
             {infoHover()}
             <i className="info material-icons">&#xe88f;</i>
           </div>
@@ -140,7 +141,7 @@ export default class App extends React.Component {
             <span className="blue">s</span>
           </button>
         </div>
-        <label> Shape <br/>
+        <label> <br/>
           <select className="shape-input" value={this.state.shape} onChange={this.updateField('shape')}>
             <option selected="selected" value="point">Point</option>
             <option value="circle">Circle</option>
