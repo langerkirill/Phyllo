@@ -154,6 +154,7 @@ export default class App extends React.Component {
             </div>
           </section>
         </div>
+        <div>Click on the screen to reset the pattern</div>
       </div>
     );
   }

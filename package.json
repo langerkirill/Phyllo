@@ -10,7 +10,7 @@
     "p5.js",
     "processing"
   ],
-  "homepage": ".",
+  "homepage": "https://langerkirill.github.io/Phyllo",
   "repository": {
     "type": "git",
     "url": "https://github.com/atorov/react-p5js.git"
@@ -22,6 +22,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "dependencies": {
+    "create-react-app": "^1.5.2",
     "npm": "^6.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -31,6 +32,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.2.0"
   }
 }
