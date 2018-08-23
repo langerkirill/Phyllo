@@ -45,7 +45,6 @@ export default class App extends React.Component {
         return (<div></div>);
       }
     }
-    // <div className="header">Phyllotaxis Visualization</div>
 
     return (
       <div className="app-box">
@@ -62,7 +61,6 @@ export default class App extends React.Component {
                 <p>GitHub</p>
               </a>
             </div>
-            <p>Click on the screen to reset the pattern</p>
           </div>
           <P5Wrapper
             p5Props={{ size: this.state.size, angle: this.state.angle, speed: this.state.speed, hue: this.state.hue, random: this.state.random, shape: this.state.shape }}
@@ -154,7 +152,7 @@ export default class App extends React.Component {
             </div>
           </section>
         </div>
-        <div>Click on the screen to reset the pattern</div>
+        <div className="reset">Click on the screen to reset the pattern</div>
       </div>
     );
   }

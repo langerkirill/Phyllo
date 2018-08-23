@@ -51,7 +51,14 @@ img {
   background: rgba(30, 52, 142, 0.5);
 }
 
+.i-box{
+  position: relative;
+}
+
 .info {
+  top: -250px;
+  left: 50px;
+  position: absolute;
   background: white;
   font-size: 100px;
   width: 100px;
@@ -150,4 +157,12 @@ input {
   align-items: center;
   justify-content: center;
   height: 80px;
+}
+
+.reset{
+  color: white;
+  width: 520px;
+  margin: 0 auto;
+  font-size: 30px;
+  margin-bottom: 30px;
 }
